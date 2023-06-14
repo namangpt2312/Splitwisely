@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "704799313820",
+    "project_id": "splitwisely-b09fa",
+    "storage_bucket": "splitwisely-b09fa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:704799313820:android:db5bb8bb25d71ece53c259",
+        "android_client_info": {
+          "package_name": "com.example.splitwisely"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "704799313820-b9qsp73kp7srqchs84fk9ftumsfslkta.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmZ7RpThMaICnS2J1KLF0Y65yndlCvRxU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "704799313820-b9qsp73kp7srqchs84fk9ftumsfslkta.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

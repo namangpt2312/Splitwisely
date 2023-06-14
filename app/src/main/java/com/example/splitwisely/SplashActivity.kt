@@ -20,6 +20,12 @@ class SplashActivity : AppCompatActivity() {
         }
         else {
             startActivity(Intent(this, MainActivity :: class.java))
+            //check if the user has completed the process of providing image and name.
+            //to do this, get the user object with uid
+            //if the user object exists, then open MainActivity
+            //else if the user object doesn't exist, open SignUpActivity
         }
+
+        finish()
     }
 }

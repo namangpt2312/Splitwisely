@@ -5,5 +5,6 @@ data class Group(
     val imageUrl: String = "",
     val uid: String = "",
     val createdBy: String = "",
-    val createdAt: Long = 0L
+    val createdAt: Long = 0L,
+    val groupMembers: ArrayList<String> = ArrayList()
 )

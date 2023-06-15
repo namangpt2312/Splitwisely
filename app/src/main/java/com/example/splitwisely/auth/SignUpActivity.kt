@@ -54,7 +54,6 @@ class SignUpActivity : AppCompatActivity() {
         }
 
         nextBtn.setOnClickListener {
-            nextBtn.isEnabled = false
             val name = findViewById<EditText>(R.id.nameEt).text.toString()
             if(name.isEmpty()) {
                 Toast.makeText(this, "Name cannot be empty!", Toast.LENGTH_SHORT).show()
@@ -63,14 +62,16 @@ class SignUpActivity : AppCompatActivity() {
                 Toast.makeText(this, "Profile picture cannot be empty!", Toast.LENGTH_SHORT).show()
             }
             else {
+                nextBtn.isEnabled = false
                 val user = User(
                     name,
-                    downloadUrl,
                     downloadUrl,
                     auth.uid!!
                 )
                 database.collection("users").document(auth.uid!!).set(user).addOnSuccessListener {
-                    startActivity(Intent(this, MainActivity:: class.java))
+                    val intent = Intent(this, MainActivity:: class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                    startActivity(intent)
                     finish()
                 }.addOnFailureListener {
                     nextBtn.isEnabled = true

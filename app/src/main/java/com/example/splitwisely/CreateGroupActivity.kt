@@ -15,6 +15,7 @@ import com.example.splitwisely.daos.GroupDao
 import com.example.splitwisely.models.User
 import com.google.android.gms.tasks.Continuation
 import com.google.android.gms.tasks.Task
+import com.google.android.material.button.MaterialButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
@@ -34,8 +35,8 @@ class CreateGroupActivity : AppCompatActivity() {
         FirebaseFirestore.getInstance()
     }
 
-    val nextBtn: Button by lazy {
-        findViewById<Button>(R.id.nextBtn)
+    val nextBtn: MaterialButton by lazy {
+        findViewById<MaterialButton>(R.id.nextBtn)
     }
 
     val userImgView: ImageView by lazy {

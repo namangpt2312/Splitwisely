@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.core.widget.addTextChangedListener
 import com.example.splitwisely.R
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.hbb20.CountryCodePicker
 
@@ -22,7 +23,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        val nextBtn = findViewById<Button>(R.id.nextBtn)
+        val nextBtn = findViewById<MaterialButton>(R.id.nextBtn)
         phoneNumberEt.addTextChangedListener{
             nextBtn.isEnabled = !(it.isNullOrEmpty() || it.length < 10)
         }

@@ -17,6 +17,7 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.core.view.isVisible
 import com.example.splitwisely.R
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
@@ -36,8 +37,8 @@ class OtpActivity : AppCompatActivity(), View.OnClickListener {
     lateinit var callbacks : PhoneAuthProvider.OnVerificationStateChangedCallbacks
     private lateinit var progressDialog : ProgressDialog
     private var mCounterDown : CountDownTimer? = null
-    val resendBtn: Button by lazy {
-        findViewById<Button>(R.id.resendBtn)
+    val resendBtn: MaterialButton by lazy {
+        findViewById<MaterialButton>(R.id.resendBtn)
     }
     val counterTv: TextView by lazy {
         findViewById<TextView>(R.id.counterTv)
@@ -45,8 +46,8 @@ class OtpActivity : AppCompatActivity(), View.OnClickListener {
     val verifyTv: TextView by lazy {
         findViewById<TextView>(R.id.verifyTv)
     }
-    val verificationBtn: Button by lazy {
-        findViewById<Button>(R.id.verificationBtn)
+    val verificationBtn: MaterialButton by lazy {
+        findViewById<MaterialButton>(R.id.verificationBtn)
     }
     val sentcodeEt: EditText by lazy {
         findViewById<EditText>(R.id.sentcodeEt)

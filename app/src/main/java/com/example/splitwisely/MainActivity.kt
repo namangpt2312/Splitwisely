@@ -3,17 +3,22 @@ package com.example.splitwisely
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.splitwisely.adapters.GroupAdapter
 import com.example.splitwisely.adapters.IGroupAdapter
+import com.example.splitwisely.auth.SignUpActivity
 import com.example.splitwisely.daos.GroupDao
 import com.example.splitwisely.models.Group
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.Query
+import com.google.firebase.ktx.Firebase
 
 class MainActivity : AppCompatActivity(), IGroupAdapter {
 
@@ -46,30 +51,26 @@ class MainActivity : AppCompatActivity(), IGroupAdapter {
         recyclerView.layoutManager = LinearLayoutManager(this)
     }
 
-//    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-//        menuInflater.inflate(R.menu.main_menu, menu)
-//        return super.onCreateOptionsMenu(menu)
-//    }
-//
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        when(item.itemId) {
-//            R.id.myPolls -> {
-//                val intent = Intent(this, MyPostsActivity :: class.java)
-//                startActivity(intent)
-//            }
-//            R.id.profile -> {
-//                startActivity(Intent(this, SignUpActivity :: class.java))
-//            }
-//            R.id.signOut -> {
-//                Firebase.auth.signOut()
-//                startActivity(
-//                    Intent(this, SplashActivity:: class.java)
-//                        .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK))
-//            }
-//        }
-//
-//        return super.onOptionsItemSelected(item)
-//    }
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            R.id.profile -> {
+                startActivity(Intent(this, SignUpActivity :: class.java))
+            }
+            R.id.signOut -> {
+                Firebase.auth.signOut()
+                startActivity(
+                    Intent(this, SplashActivity:: class.java)
+                        .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK))
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
+    }
 
     override fun onStart() {
         super.onStart()
@@ -81,7 +82,7 @@ class MainActivity : AppCompatActivity(), IGroupAdapter {
         adapter.stopListening()
     }
 
-    override fun onItemClicked(postId: String) {
+    override fun onItemClicked(groupId: String) {
 //        groupDao.updateOption1(postId)
         Toast.makeText(this, "Working", Toast.LENGTH_SHORT).show()
     }

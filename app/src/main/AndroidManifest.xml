@@ -17,6 +17,9 @@
         android:theme="@style/Theme.Splitwisely"
         tools:targetApi="31">
         <activity
+            android:name=".GroupActivity"
+            android:exported="false" />
+        <activity
             android:name=".CreateGroupActivity"
             android:exported="false" />
         <activity

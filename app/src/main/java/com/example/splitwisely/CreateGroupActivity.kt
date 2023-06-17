@@ -67,7 +67,11 @@ class CreateGroupActivity : AppCompatActivity() {
             }
             else {
                 nextBtn.isEnabled = false
+
 //                groupDao.addGroup(name, downloadUrl)
+//                val intent = Intent(this, MainActivity:: class.java)
+//                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+//                startActivity(intent)
 //                finish()
 
                 val currentUserId = auth.uid!!
@@ -75,9 +79,9 @@ class CreateGroupActivity : AppCompatActivity() {
                 val group = Group(name, downloadUrl, currentUserId, currentUserId, currentTime)
 
                 database.collection("groups").document().set(group).addOnSuccessListener {
-//                    val intent = Intent(this, MainActivity:: class.java)
-//                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-//                    startActivity(intent)
+                    val intent = Intent(this, MainActivity:: class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                    startActivity(intent)
                     finish()
                 }.addOnFailureListener {
                     nextBtn.isEnabled = true

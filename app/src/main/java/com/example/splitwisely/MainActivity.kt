@@ -83,7 +83,8 @@ class MainActivity : AppCompatActivity(), IGroupAdapter {
     }
 
     override fun onItemClicked(groupId: String) {
-//        groupDao.updateOption1(postId)
-        Toast.makeText(this, "Working", Toast.LENGTH_SHORT).show()
+        val intent = Intent(this, GroupActivity::class.java)
+        intent.putExtra("groupId", groupId)
+        startActivity(intent)
     }
 }

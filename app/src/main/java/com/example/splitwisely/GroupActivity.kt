@@ -20,6 +20,7 @@ import com.example.splitwisely.models.Group
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.google.firebase.ktx.Firebase
 
@@ -34,7 +35,9 @@ class GroupActivity : AppCompatActivity(), IExpenseAdapter {
 
         val fab = findViewById<FloatingActionButton>(R.id.fab)
         fab.setOnClickListener{
+            val groupId = intent.getStringExtra("groupId")
             val intent = Intent(this, CreateExpenseActivity::class.java)
+            intent.putExtra("groupId", groupId)
             startActivity(intent)
         }
 
@@ -42,9 +45,10 @@ class GroupActivity : AppCompatActivity(), IExpenseAdapter {
     }
 
     private fun setUpRecyclerView() {
-        expenseDao = ExpenseDao()
-        val expenseCollections = expenseDao.expenseCollections
-        val query = expenseCollections.orderBy("createdAt", Query.Direction.DESCENDING)
+//        expenseDao = ExpenseDao()
+//        val expenseCollections = expenseDao.expenseCollections
+        val groupId = intent.getStringExtra("groupId")!!
+        val query = FirebaseFirestore.getInstance().collection("groupExpenses").document(groupId).collection("expenses").orderBy("createdAt", Query.Direction.DESCENDING)
         val recyclerViewOptions = FirestoreRecyclerOptions.Builder<Expense>().setQuery(query, Expense::class.java).build()
 
         adapter = ExpenseAdapter(recyclerViewOptions, this)

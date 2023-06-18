@@ -77,9 +77,11 @@ class CreateExpenseActivity : AppCompatActivity() {
                 val currentUserId = auth.uid!!
                 val currentTime = System.currentTimeMillis()
                 val expense = Expense(name, downloadUrl, currentUserId, currentUserId, currentTime)
+                val groupId = intent.getStringExtra("groupId")!!
 
-                database.collection("expenses").document().set(expense).addOnSuccessListener {
+                database.collection("groupExpenses").document(groupId).collection("expenses").document().set(expense).addOnSuccessListener {
                     val intent = Intent(this, GroupActivity:: class.java)
+                    intent.putExtra("groupId", groupId)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                     startActivity(intent)
                     finish()

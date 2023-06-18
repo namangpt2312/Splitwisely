@@ -68,6 +68,13 @@ class GroupActivity : AppCompatActivity(), IExpenseAdapter {
         adapter.stopListening()
     }
 
+    override fun onBackPressed() {
+        val intent = Intent(this, MainActivity:: class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+        startActivity(intent)
+        finish()
+    }
+
     override fun onItemClicked(expenseId: String) {
 //        groupDao.updateOption1(postId)
         Toast.makeText(this, "Working", Toast.LENGTH_SHORT).show()
